@@ -4,7 +4,7 @@ A really simple migration tool for node / postgres
 
 - define migrations in SQL files
 - 1 file = 1 migration
-- you choose the migration files directory. Defaults to `migrations`.
+- you choose the migration files directory location.
 - migrations run in alphabetical filename order. Simplest scheme is `0001.sql, 0002.sql, 0003.sql` etc.
 - the content of a migration can't be changed after is has run
 - migrations are tracked in the database in a table you choose. Defaults to `_migrations`.
