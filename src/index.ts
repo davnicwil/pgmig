@@ -184,8 +184,8 @@ export async function run(
           [
             appliedMigrations.rows.length + 1,
             filename,
-            duration,
             getHash(filename, fileContent),
+            duration,
           ],
         )
 
