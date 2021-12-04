@@ -50,7 +50,7 @@ export async function run(
     password,
     port,
 
-    migrationsDirectory = 'migrations',
+    migrationsDirectory = __dirname + '/migrations',
     migrationsTable = '_migrations',
 
     log = () => {},
