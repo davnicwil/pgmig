@@ -50,7 +50,7 @@ export async function run(
     password,
     port,
 
-    migrationsDirectory,
+    migrationsDirectory = 'migrations',
     migrationsTable = '_migrations',
 
     log = () => {},
@@ -180,13 +180,13 @@ export async function run(
         await client.query(fileContent)
         const duration = Date.now() - started
         await client.query(
-          `insert into ${migrationsTable} (number, filename, hash, duration, completed) values ($<number>, $<filename>, $<hash>, $<duration>, (SELECT (now() at time zone 'utc')))`,
-          {
-            number: appliedMigrations.rows.length + 1,
+          `insert into ${migrationsTable} (number, filename, hash, duration, completed) values ($1, $2, $3, $4, (SELECT (now() at time zone 'utc')))`,
+          [
+            appliedMigrations.rows.length + 1,
             filename,
             duration,
-            hash: getHash(filename, fileContent),
-          },
+            getHash(filename, fileContent),
+          ],
         )
 
         log('debug', `pgmig: applied migration [${filename}]`)
