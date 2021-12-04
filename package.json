@@ -1,0 +1,41 @@
+{
+  "name": "pgmig",
+  "version": "0.0.1",
+  "description": "Run SQL migrations on your postgres database on server start",
+  "author": "davnicwil",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/davnicwil/pgmig",
+    "type": "git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "compile-ts": "tsc",
+    "minify": "./node_modules/uglify-js/bin/uglifyjs ./dist/index.js -o ./dist/index.js",
+    "build": "npm run compile-ts && npm run minify",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.11",
+    "prettier": "2.2.1",
+    "typescript": "4.5.2",
+    "uglify-js": "3.14.4"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "parser": "typescript"
+  },
+  "keywords": [
+    "postgres",
+    "migrations",
+    "migrate",
+    "SQL",
+    "files",
+    "SQL files",
+    "raw SQL"
+  ]
+}
