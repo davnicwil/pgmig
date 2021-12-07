@@ -19,6 +19,12 @@ A couple of notable things not included
 
 ### Usage
 
+You can install `pgmig` directly from github (the built artifacts are in the `dist` directory)
+
+```
+npm i davnicwil/pgmig
+```
+
 `pgmig` ships with typescript types (it is in fact written in TS) so you can see this in your editor, but just for a quick bit of documentation here is the signature of the single function the library exports to run your migrations:
 
 ```
