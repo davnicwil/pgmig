@@ -79,7 +79,7 @@ export async function run(
 
   // create migrations table if it doesn't already exist
   await client.query(
-    `create table if not exists ${migrationsTable} (number int NOT NULL, filename text NOT NULL, hash text NOT NULL, completed timestamp with time zone NOT NULL, duration bigint NOT NULL)`,
+    `create table if not exists ${migrationsTable} (number int PRIMARY KEY NOT NULL, filename text NOT NULL, hash text NOT NULL, completed timestamp with time zone NOT NULL, duration bigint NOT NULL)`,
   )
 
   // wrap all transactions to be run in a single transaction
