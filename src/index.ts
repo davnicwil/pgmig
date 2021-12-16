@@ -169,7 +169,9 @@ export async function run(
       log('debug', `pgmig: ${noMigrationsMessage}`)
     }
 
-    for (let filename of unappliedMigrationFilenames) {
+    for (let i = 0; i < unappliedMigrationFilenames.length; i++) {
+      const filename = unappliedMigrationFilenames[i]
+
       try {
         const fileContent = readMigrationFileContent(
           migrationsDirectory,
@@ -182,7 +184,7 @@ export async function run(
         await client.query(
           `insert into ${migrationsTable} (number, filename, hash, duration, completed) values ($1, $2, $3, $4, (SELECT (now() at time zone 'utc')))`,
           [
-            appliedMigrations.rows.length + 1,
+            appliedMigrations.rows.length + i + 1,
             filename,
             getHash(filename, fileContent),
             duration,
